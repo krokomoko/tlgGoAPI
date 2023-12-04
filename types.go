@@ -670,17 +670,17 @@ type BotCommandScopeAllChatAdministrators struct {
 
 type BotCommandScopeChat struct {
 	Type   string `json:"type,omitempty"`
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type BotCommandScopeChatAdministrators struct {
 	Type   string `json:"type,omitempty"`
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type BotCommandScopeChatMember struct {
 	Type   string `json:"type,omitempty"`
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 	UserId int64  `json:"user_id,omitempty"`
 }
 

@@ -17,18 +17,18 @@ type SendMessage struct {
 }
 
 type ForwardMessage struct {
-	ChatId              string `json:"chat_id,omitempty"`
-	MessageThreadId     int64  `json:"message_thread_id,omitempty"`
-	FromChatId          string `json:"from_chat_id,omitempty"`
-	DisableNotification bool   `json:"disable_notification,omitempty"`
-	ProtectContent      bool   `json:"protect_content,omitempty"`
-	MessageId           int64  `json:"message_id,omitempty"`
+	ChatId              int64 `json:"chat_id,omitempty"`
+	MessageThreadId     int64 `json:"message_thread_id,omitempty"`
+	FromChatId          int64 `json:"from_chat_id,omitempty"`
+	DisableNotification bool  `json:"disable_notification,omitempty"`
+	ProtectContent      bool  `json:"protect_content,omitempty"`
+	MessageId           int64 `json:"message_id,omitempty"`
 }
 
 type CopyMessage struct {
-	ChatId                   string               `json:"chat_id,omitempty"`
+	ChatId                   int64                `json:"chat_id,omitempty"`
 	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	FromChatId               string               `json:"from_chat_id,omitempty"`
+	FromChatId               int64                `json:"from_chat_id,omitempty"`
 	MessageId                int64                `json:"message_id,omitempty"`
 	Caption                  string               `json:"caption,omitempty"`
 	ParseMode                string               `json:"parse_mode,omitempty"`
@@ -41,7 +41,7 @@ type CopyMessage struct {
 }
 
 type SendPhoto struct {
-	ChatId                   string               `json:"chat_id,omitempty"`
+	ChatId                   int64                `json:"chat_id,omitempty"`
 	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
 	Photo                    InputFile            `json:"photo,omitempty"`
 	Caption                  string               `json:"caption,omitempty"`
@@ -56,7 +56,7 @@ type SendPhoto struct {
 }
 
 type SendAudio struct {
-	ChatId                   string               `json:"chat_id,omitempty"`
+	ChatId                   int64                `json:"chat_id,omitempty"`
 	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
 	Audio                    InputFile            `json:"audio,omitempty"`
 	Caption                  string               `json:"caption,omitempty"`
@@ -74,7 +74,7 @@ type SendAudio struct {
 }
 
 type SendDocument struct {
-	ChatId                      string               `json:"chat_id,omitempty"`
+	ChatId                      int64                `json:"chat_id,omitempty"`
 	MessageThreadId             int64                `json:"message_thread_id,omitempty"`
 	Document                    InputFile            `json:"document,omitempty"`
 	Thumbnail                   InputFile            `json:"thumbnail,omitempty"`
@@ -90,7 +90,7 @@ type SendDocument struct {
 }
 
 type SendVideo struct {
-	ChatId                   string               `json:"chat_id,omitempty"`
+	ChatId                   int64                `json:"chat_id,omitempty"`
 	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
 	Video                    InputFile            `json:"video,omitempty"`
 	Duration                 int64                `json:"duration,omitempty"`
@@ -110,7 +110,7 @@ type SendVideo struct {
 }
 
 type SendAnimation struct {
-	ChatId                   string               `json:"chat_id,omitempty"`
+	ChatId                   int64                `json:"chat_id,omitempty"`
 	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
 	Animation                InputFile            `json:"animation,omitempty"`
 	Duration                 int64                `json:"duration,omitempty"`
@@ -129,7 +129,7 @@ type SendAnimation struct {
 }
 
 type SendVoice struct {
-	ChatId                   string               `json:"chat_id,omitempty"`
+	ChatId                   int64                `json:"chat_id,omitempty"`
 	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
 	Voice                    InputFile            `json:"voice,omitempty"`
 	Caption                  string               `json:"caption,omitempty"`
@@ -144,7 +144,7 @@ type SendVoice struct {
 }
 
 type SendVideoNote struct {
-	ChatId                   string               `json:"chat_id,omitempty"`
+	ChatId                   int64                `json:"chat_id,omitempty"`
 	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
 	VideoNote                InputFile            `json:"video_note,omitempty"`
 	Duration                 int64                `json:"duration,omitempty"`
@@ -158,7 +158,7 @@ type SendVideoNote struct {
 }
 
 type SendMediaGroup struct {
-	ChatId                   string        `json:"chat_id,omitempty"`
+	ChatId                   int64         `json:"chat_id,omitempty"`
 	MessageThreadId          int64         `json:"message_thread_id,omitempty"`
 	Media                    []interface{} `json:"media,omitempty"`
 	DisableNotification      bool          `json:"disable_notification,omitempty"`
@@ -168,7 +168,7 @@ type SendMediaGroup struct {
 }
 
 type SendLocation struct {
-	ChatId                   string               `json:"chat_id,omitempty"`
+	ChatId                   int64                `json:"chat_id,omitempty"`
 	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
 	Latitude                 float32              `json:"latitude,omitempty"`
 	Longitude                float32              `json:"longitude,omitempty"`
@@ -184,7 +184,7 @@ type SendLocation struct {
 }
 
 type SendVenue struct {
-	ChatId                   string               `json:"chat_id,omitempty"`
+	ChatId                   int64                `json:"chat_id,omitempty"`
 	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
 	Latitude                 float32              `json:"latitude,omitempty"`
 	Longitude                float32              `json:"longitude,omitempty"`
@@ -202,7 +202,7 @@ type SendVenue struct {
 }
 
 type SendContact struct {
-	ChatId                   string               `json:"chat_id,omitempty"`
+	ChatId                   int64                `json:"chat_id,omitempty"`
 	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
 	PhoneNumber              string               `json:"phone_number,omitempty"`
 	FirstName                string               `json:"first_name,omitempty"`
@@ -216,7 +216,7 @@ type SendContact struct {
 }
 
 type SendPoll struct {
-	ChatId                   string               `json:"chat_id,omitempty"`
+	ChatId                   int64                `json:"chat_id,omitempty"`
 	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
 	Question                 string               `json:"question,omitempty"`
 	Options                  []string             `json:"options,omitempty"`
@@ -238,7 +238,7 @@ type SendPoll struct {
 }
 
 type SendDice struct {
-	ChatId                   string               `json:"chat_id,omitempty"`
+	ChatId                   int64                `json:"chat_id,omitempty"`
 	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
 	Emoji                    string               `json:"emoji,omitempty"`
 	DisableNotification      bool                 `json:"disable_notification,omitempty"`
@@ -249,7 +249,7 @@ type SendDice struct {
 }
 
 type SendChatAction struct {
-	ChatId          string `json:"chat_id,omitempty"`
+	ChatId          int64  `json:"chat_id,omitempty"`
 	MessageThreadId int64  `json:"message_thread_id,omitempty"`
 	Action          string `json:"action,omitempty"`
 }
@@ -265,74 +265,74 @@ type GetFile struct {
 }
 
 type BanChatMember struct {
-	ChatId         string `json:"chat_id,omitempty"`
-	UserId         int64  `json:"user_id,omitempty"`
-	UntilDate      int64  `json:"until_date,omitempty"`
-	RevokeMessages bool   `json:"revoke_messages,omitempty"`
+	ChatId         int64 `json:"chat_id,omitempty"`
+	UserId         int64 `json:"user_id,omitempty"`
+	UntilDate      int64 `json:"until_date,omitempty"`
+	RevokeMessages bool  `json:"revoke_messages,omitempty"`
 }
 
 type UnbanChatMember struct {
-	ChatId       string `json:"chat_id,omitempty"`
-	UserId       int64  `json:"user_id,omitempty"`
-	OnlyIfBanned bool   `json:"only_if_banned,omitempty"`
+	ChatId       int64 `json:"chat_id,omitempty"`
+	UserId       int64 `json:"user_id,omitempty"`
+	OnlyIfBanned bool  `json:"only_if_banned,omitempty"`
 }
 
 type RestrictChatMember struct {
-	ChatId                        string          `json:"chat_id,omitempty"`
+	ChatId                        int64           `json:"chat_id,omitempty"`
 	UserId                        int64           `json:"user_id,omitempty"`
 	Permissions                   ChatPermissions `json:"permissions,omitempty"`
-	UseIndependentChatPermissions bool            `json:"use_independent_chat_permissions,omitempty"`
+	UseIndependentChatPermissions Bool            `json:"use_independent_chat_permissions,omitempty"`
 	UntilDate                     int64           `json:"until_date,omitempty"`
 }
 
 type PromoteChatMember struct {
-	ChatId              string `json:"chat_id,omitempty"`
-	UserId              int64  `json:"user_id,omitempty"`
-	IsAnonymous         bool   `json:"is_anonymous,omitempty"`
-	CanManageChat       bool   `json:"can_manage_chat,omitempty"`
-	CanDeleteMessages   bool   `json:"can_delete_messages,omitempty"`
-	CanManageVideoChats bool   `json:"can_manage_video_chats,omitempty"`
-	CanRestrictMembers  bool   `json:"can_restrict_members,omitempty"`
-	CanPromoteMembers   bool   `json:"can_promote_members,omitempty"`
-	CanChangeInfo       bool   `json:"can_change_info,omitempty"`
-	CanInviteUsers      bool   `json:"can_invite_users,omitempty"`
-	CanPostMessages     bool   `json:"can_post_messages,omitempty"`
-	CanEditMessages     bool   `json:"can_edit_messages,omitempty"`
-	CanPinMessages      bool   `json:"can_pin_messages,omitempty"`
-	CanPostStories      bool   `json:"can_post_stories,omitempty"`
-	CanEditStories      bool   `json:"can_edit_stories,omitempty"`
-	CanDeleteStories    bool   `json:"can_delete_stories,omitempty"`
-	CanManageTopics     bool   `json:"can_manage_topics,omitempty"`
+	ChatId              int64 `json:"chat_id,omitempty"`
+	UserId              int64 `json:"user_id,omitempty"`
+	IsAnonymous         bool  `json:"is_anonymous,omitempty"`
+	CanManageChat       bool  `json:"can_manage_chat,omitempty"`
+	CanDeleteMessages   bool  `json:"can_delete_messages,omitempty"`
+	CanManageVideoChats bool  `json:"can_manage_video_chats,omitempty"`
+	CanRestrictMembers  bool  `json:"can_restrict_members,omitempty"`
+	CanPromoteMembers   bool  `json:"can_promote_members,omitempty"`
+	CanChangeInfo       bool  `json:"can_change_info,omitempty"`
+	CanInviteUsers      bool  `json:"can_invite_users,omitempty"`
+	CanPostMessages     bool  `json:"can_post_messages,omitempty"`
+	CanEditMessages     bool  `json:"can_edit_messages,omitempty"`
+	CanPinMessages      bool  `json:"can_pin_messages,omitempty"`
+	CanPostStories      bool  `json:"can_post_stories,omitempty"`
+	CanEditStories      bool  `json:"can_edit_stories,omitempty"`
+	CanDeleteStories    bool  `json:"can_delete_stories,omitempty"`
+	CanManageTopics     bool  `json:"can_manage_topics,omitempty"`
 }
 
 type SetChatAdministratorCustomTitle struct {
-	ChatId      string `json:"chat_id,omitempty"`
+	ChatId      int64  `json:"chat_id,omitempty"`
 	UserId      int64  `json:"user_id,omitempty"`
 	CustomTitle string `json:"custom_title,omitempty"`
 }
 
 type BanChatSenderChat struct {
-	ChatId       string `json:"chat_id,omitempty"`
-	SenderChatId int64  `json:"sender_chat_id,omitempty"`
+	ChatId       int64 `json:"chat_id,omitempty"`
+	SenderChatId int64 `json:"sender_chat_id,omitempty"`
 }
 
 type UnbanChatSenderChat struct {
-	ChatId       string `json:"chat_id,omitempty"`
-	SenderChatId int64  `json:"sender_chat_id,omitempty"`
+	ChatId       int64 `json:"chat_id,omitempty"`
+	SenderChatId int64 `json:"sender_chat_id,omitempty"`
 }
 
 type SetChatPermissions struct {
-	ChatId                        string          `json:"chat_id,omitempty"`
+	ChatId                        int64           `json:"chat_id,omitempty"`
 	Permissions                   ChatPermissions `json:"permissions,omitempty"`
 	UseIndependentChatPermissions bool            `json:"use_independent_chat_permissions,omitempty"`
 }
 
 type ExportChatInviteLink struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type CreateChatInviteLink struct {
-	ChatId             string `json:"chat_id,omitempty"`
+	ChatId             int64  `json:"chat_id,omitempty"`
 	Name               string `json:"name,omitempty"`
 	ExpireDate         int64  `json:"expire_date,omitempty"`
 	MemberLimit        int64  `json:"member_limit,omitempty"`
@@ -340,7 +340,7 @@ type CreateChatInviteLink struct {
 }
 
 type EditChatInviteLink struct {
-	ChatId             string `json:"chat_id,omitempty"`
+	ChatId             int64  `json:"chat_id,omitempty"`
 	InviteLink         string `json:"invite_link,omitempty"`
 	Name               string `json:"name,omitempty"`
 	ExpireDate         int64  `json:"expire_date,omitempty"`
@@ -349,141 +349,141 @@ type EditChatInviteLink struct {
 }
 
 type RevokeChatInviteLink struct {
-	ChatId     string `json:"chat_id,omitempty"`
+	ChatId     int64  `json:"chat_id,omitempty"`
 	InviteLink string `json:"invite_link,omitempty"`
 }
 
 type ApproveChatJoinRequest struct {
-	ChatId string `json:"chat_id,omitempty"`
-	UserId int64  `json:"user_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
+	UserId int64 `json:"user_id,omitempty"`
 }
 
 type DeclineChatJoinRequest struct {
-	ChatId string `json:"chat_id,omitempty"`
-	UserId int64  `json:"user_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
+	UserId int64 `json:"user_id,omitempty"`
 }
 
 type SetChatPhoto struct {
-	ChatId string    `json:"chat_id,omitempty"`
+	ChatId int64     `json:"chat_id,omitempty"`
 	Photo  InputFile `json:"photo,omitempty"`
 }
 
 type DeleteChatPhoto struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type SetChatTitle struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64  `json:"chat_id,omitempty"`
 	Title  string `json:"title,omitempty"`
 }
 
 type SetChatDescription struct {
-	ChatId      string `json:"chat_id,omitempty"`
+	ChatId      int64  `json:"chat_id,omitempty"`
 	Description string `json:"description,omitempty"`
 }
 
 type PinChatMessage struct {
-	ChatId              string `json:"chat_id,omitempty"`
-	MessageId           int64  `json:"message_id,omitempty"`
-	DisableNotification bool   `json:"disable_notification,omitempty"`
+	ChatId              int64 `json:"chat_id,omitempty"`
+	MessageId           int64 `json:"message_id,omitempty"`
+	DisableNotification bool  `json:"disable_notification,omitempty"`
 }
 
 type UnpinChatMessage struct {
-	ChatId    string `json:"chat_id,omitempty"`
-	MessageId int64  `json:"message_id,omitempty"`
+	ChatId    int64 `json:"chat_id,omitempty"`
+	MessageId int64 `json:"message_id,omitempty"`
 }
 
 type UnpinAllChatMessages struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type LeaveChat struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type GetChat struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type GetChatAdministrators struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type GetChatMemberCount struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type GetChatMember struct {
-	ChatId string `json:"chat_id,omitempty"`
-	UserId int64  `json:"user_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
+	UserId int64 `json:"user_id,omitempty"`
 }
 
 type SetChatStickerSet struct {
-	ChatId         string `json:"chat_id,omitempty"`
+	ChatId         int64  `json:"chat_id,omitempty"`
 	StickerSetName string `json:"sticker_set_name,omitempty"`
 }
 
 type DeleteChatStickerSet struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type CreateForumTopic struct {
-	ChatId            string `json:"chat_id,omitempty"`
+	ChatId            int64  `json:"chat_id,omitempty"`
 	Name              string `json:"name,omitempty"`
 	IconColor         int64  `json:"icon_color,omitempty"`
 	IconCustomEmojiId string `json:"icon_custom_emoji_id,omitempty"`
 }
 
 type EditForumTopic struct {
-	ChatId            string `json:"chat_id,omitempty"`
+	ChatId            int64  `json:"chat_id,omitempty"`
 	MessageThreadId   int64  `json:"message_thread_id,omitempty"`
 	Name              string `json:"name,omitempty"`
 	IconCustomEmojiId string `json:"icon_custom_emoji_id,omitempty"`
 }
 
 type CloseForumTopic struct {
-	ChatId          string `json:"chat_id,omitempty"`
-	MessageThreadId int64  `json:"message_thread_id,omitempty"`
+	ChatId          int64 `json:"chat_id,omitempty"`
+	MessageThreadId int64 `json:"message_thread_id,omitempty"`
 }
 
 type ReopenForumTopic struct {
-	ChatId          string `json:"chat_id,omitempty"`
-	MessageThreadId int64  `json:"message_thread_id,omitempty"`
+	ChatId          int64 `json:"chat_id,omitempty"`
+	MessageThreadId int64 `json:"message_thread_id,omitempty"`
 }
 
 type DeleteForumTopic struct {
-	ChatId          string `json:"chat_id,omitempty"`
-	MessageThreadId int64  `json:"message_thread_id,omitempty"`
+	ChatId          int64 `json:"chat_id,omitempty"`
+	MessageThreadId int64 `json:"message_thread_id,omitempty"`
 }
 
 type UnpinAllForumTopicMessages struct {
-	ChatId          string `json:"chat_id,omitempty"`
-	MessageThreadId int64  `json:"message_thread_id,omitempty"`
+	ChatId          int64 `json:"chat_id,omitempty"`
+	MessageThreadId int64 `json:"message_thread_id,omitempty"`
 }
 
 type EditGeneralForumTopic struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64  `json:"chat_id,omitempty"`
 	Name   string `json:"name,omitempty"`
 }
 
 type CloseGeneralForumTopic struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type ReopenGeneralForumTopic struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type HideGeneralForumTopic struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type UnhideGeneralForumTopic struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type UnpinAllGeneralForumTopicMessages struct {
-	ChatId string `json:"chat_id,omitempty"`
+	ChatId int64 `json:"chat_id,omitempty"`
 }
 
 type AnswerCallbackQuery struct {
@@ -556,7 +556,7 @@ type GetMyDefaultAdministratorRights struct {
 }
 
 type EditMessageText struct {
-	ChatId                string               `json:"chat_id,omitempty"`
+	ChatId                int64                `json:"chat_id,omitempty"`
 	MessageId             int64                `json:"message_id,omitempty"`
 	InlineMessageId       string               `json:"inline_message_id,omitempty"`
 	Text                  string               `json:"text,omitempty"`
@@ -567,7 +567,7 @@ type EditMessageText struct {
 }
 
 type EditMessageCaption struct {
-	ChatId          string               `json:"chat_id,omitempty"`
+	ChatId          int64                `json:"chat_id,omitempty"`
 	MessageId       int64                `json:"message_id,omitempty"`
 	InlineMessageId string               `json:"inline_message_id,omitempty"`
 	Caption         string               `json:"caption,omitempty"`
@@ -577,7 +577,7 @@ type EditMessageCaption struct {
 }
 
 type EditMessageMedia struct {
-	ChatId          string               `json:"chat_id,omitempty"`
+	ChatId          int64                `json:"chat_id,omitempty"`
 	MessageId       int64                `json:"message_id,omitempty"`
 	InlineMessageId string               `json:"inline_message_id,omitempty"`
 	Media           InputMedia           `json:"media,omitempty"`
@@ -585,7 +585,7 @@ type EditMessageMedia struct {
 }
 
 type EditMessageLiveLocation struct {
-	ChatId               string               `json:"chat_id,omitempty"`
+	ChatId               int64                `json:"chat_id,omitempty"`
 	MessageId            int64                `json:"message_id,omitempty"`
 	InlineMessageId      string               `json:"inline_message_id,omitempty"`
 	Latitude             float32              `json:"latitude,omitempty"`
@@ -597,32 +597,32 @@ type EditMessageLiveLocation struct {
 }
 
 type StopMessageLiveLocation struct {
-	ChatId          string               `json:"chat_id,omitempty"`
+	ChatId          int64                `json:"chat_id,omitempty"`
 	MessageId       int64                `json:"message_id,omitempty"`
 	InlineMessageId string               `json:"inline_message_id,omitempty"`
 	ReplyMarkup     InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 type EditMessageReplyMarkup struct {
-	ChatId          string               `json:"chat_id,omitempty"`
+	ChatId          int64                `json:"chat_id,omitempty"`
 	MessageId       int64                `json:"message_id,omitempty"`
 	InlineMessageId string               `json:"inline_message_id,omitempty"`
 	ReplyMarkup     InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 type StopPoll struct {
-	ChatId      string               `json:"chat_id,omitempty"`
+	ChatId      int64                `json:"chat_id,omitempty"`
 	MessageId   int64                `json:"message_id,omitempty"`
 	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 type DeleteMessage struct {
-	ChatId    string `json:"chat_id,omitempty"`
-	MessageId int64  `json:"message_id,omitempty"`
+	ChatId    int64 `json:"chat_id,omitempty"`
+	MessageId int64 `json:"message_id,omitempty"`
 }
 
 type SendSticker struct {
-	ChatId                   string               `json:"chat_id,omitempty"`
+	ChatId                   int64                `json:"chat_id,omitempty"`
 	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
 	Sticker                  InputFile            `json:"sticker,omitempty"`
 	Emoji                    string               `json:"emoji,omitempty"`
@@ -722,7 +722,7 @@ type AnswerWebAppQuery struct {
 }
 
 type SendInvoice struct {
-	ChatId                    string               `json:"chat_id,omitempty"`
+	ChatId                    int64                `json:"chat_id,omitempty"`
 	MessageThreadId           int64                `json:"message_thread_id,omitempty"`
 	Title                     string               `json:"title,omitempty"`
 	Description               string               `json:"description,omitempty"`
