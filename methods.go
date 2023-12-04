@@ -281,7 +281,7 @@ type RestrictChatMember struct {
 	ChatId                        int64           `json:"chat_id,omitempty"`
 	UserId                        int64           `json:"user_id,omitempty"`
 	Permissions                   ChatPermissions `json:"permissions,omitempty"`
-	UseIndependentChatPermissions Bool            `json:"use_independent_chat_permissions,omitempty"`
+	UseIndependentChatPermissions bool            `json:"use_independent_chat_permissions,omitempty"`
 	UntilDate                     int64           `json:"until_date,omitempty"`
 }
 
