@@ -228,7 +228,7 @@ type Document struct {
 	FileSize     int64     `json:"file_size,omitempty"`
 }
 
-type Story string
+type Story interface{}
 
 type Video struct {
 	FileId       string    `json:"file_id,omitempty"`
@@ -340,18 +340,18 @@ type ForumTopicCreated struct {
 	IconCustomEmojiId string `json:"icon_custom_emoji_id,omitempty"`
 }
 
-type ForumTopicClosed string
+type ForumTopicClosed interface{}
 
 type ForumTopicEdited struct {
 	Name              string
 	IconCustomEmojiId string
 }
 
-type ForumTopicReopened string
+type ForumTopicReopened interface{}
 
-type GeneralForumTopicHidden string
+type GeneralForumTopicHidden interface{}
 
-type GeneralForumTopicUnhidden string
+type GeneralForumTopicUnhidden interface{}
 
 type UserShared struct {
 	RequestId int64 `json:"request_id,omitempty"`
@@ -373,7 +373,7 @@ type VideoChatScheduled struct {
 	StartDate int64 `json:"start_date,omitempty"`
 }
 
-type VideoChatStarted string
+type VideoChatStarted interface{}
 
 type VideoChatEnded struct {
 	Duration int64 `json:"duration,omitempty"`
@@ -670,17 +670,17 @@ type BotCommandScopeAllChatAdministrators struct {
 
 type BotCommandScopeChat struct {
 	Type   string `json:"type,omitempty"`
-	ChatId int64 `json:"chat_id,omitempty"`
+	ChatId int64  `json:"chat_id,omitempty"`
 }
 
 type BotCommandScopeChatAdministrators struct {
 	Type   string `json:"type,omitempty"`
-	ChatId int64 `json:"chat_id,omitempty"`
+	ChatId int64  `json:"chat_id,omitempty"`
 }
 
 type BotCommandScopeChatMember struct {
 	Type   string `json:"type,omitempty"`
-	ChatId int64 `json:"chat_id,omitempty"`
+	ChatId int64  `json:"chat_id,omitempty"`
 	UserId int64  `json:"user_id,omitempty"`
 }
 
