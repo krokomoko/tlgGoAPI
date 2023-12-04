@@ -50,6 +50,12 @@ To change user state use **SetUserState** method of bot instance:
 	userId := update.Message.From.Id
 	state := "some new state"
 	bot.SetUserState(userId, state)
+	
+### Set 404 message
+
+If you want to respond to a user who sent an unscheduled message that you are not expecting at the moment, set an automatic 404 message for this case
+
+	bot.Set404("Sorry, I can't understand you")
 
 ## Other
 
