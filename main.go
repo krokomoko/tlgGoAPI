@@ -34,7 +34,7 @@ func NewBot(token string) *bot {
 		token:        token,
 		url:          fmt.Sprintf("https://api.telegram.org/bot%s/", token),
 		callbacks:    make(map[string]func(update *Update) error),
-		not_found:    "Can't understand your message. Please try again =)",
+		not_found:    "",
 		stateMachine: newStateMachine(),
 		/*
 			client: http.Client{
@@ -165,6 +165,10 @@ func (bot *bot) Set404(text string) {
 
 // customization will be added later
 func (bot *bot) send404(update *Update) {
+	if len(bot.not_found) == 0 {
+		return
+	}
+	
 	_, err := bot.Call(SendMessage{
 		ChatId: update.Message.Chat.Id,
 		Text:   bot.not_found,
