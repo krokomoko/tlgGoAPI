@@ -222,6 +222,11 @@ func (bot *bot) messageTypeCheck(update *Update, state string) (func(update *Upd
 		messageType += fmt.Sprintf("%d.", M_GIF)
 	}
 
+	// M_CALLBACK
+	if update.CallbackQuery.Id != ""  {
+		messageType += fmt.Sprintf("%d.", M_CALLBACK)
+	}
+
 	// M_DOCUMENT
 	if len(update.Message.Document.FileId) > 0 {
 		messageType += fmt.Sprintf("%d.", M_DOCUMENT)

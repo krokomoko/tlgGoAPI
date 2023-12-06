@@ -13,6 +13,7 @@ const (
 	M_DOCUMENT
 	M_STICKER
 	M_URL
+	M_CALLBACK
 )
 
 type TelegramUpdate struct {
