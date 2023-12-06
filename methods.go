@@ -3,17 +3,17 @@ package tlgGoAPI
 import "errors"
 
 type SendMessage struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	Text                     string               `json:"text,omitempty"`
-	ParseMode                string               `json:"parse_mode,omitempty"`
-	Entities                 []MessageEntity      `json:"entities,omitempty"`
-	DisableWebPagePreview    bool                 `json:"disable_web_page_preview,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64           `json:"chat_id,omitempty"`
+	MessageThreadId          int64           `json:"message_thread_id,omitempty"`
+	Text                     string          `json:"text,omitempty"`
+	ParseMode                string          `json:"parse_mode,omitempty"`
+	Entities                 []MessageEntity `json:"entities,omitempty"`
+	DisableWebPagePreview    bool            `json:"disable_web_page_preview,omitempty"`
+	DisableNotification      bool            `json:"disable_notification,omitempty"`
+	ProtectContent           bool            `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64           `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{}     `json:"reply_markup,omitempty"`
 }
 
 type ForwardMessage struct {
@@ -26,135 +26,135 @@ type ForwardMessage struct {
 }
 
 type CopyMessage struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	FromChatId               int64                `json:"from_chat_id,omitempty"`
-	MessageId                int64                `json:"message_id,omitempty"`
-	Caption                  string               `json:"caption,omitempty"`
-	ParseMode                string               `json:"parse_mode,omitempty"`
-	CaptionEntities          []MessageEntity      `json:"caption_entities,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64           `json:"chat_id,omitempty"`
+	MessageThreadId          int64           `json:"message_thread_id,omitempty"`
+	FromChatId               int64           `json:"from_chat_id,omitempty"`
+	MessageId                int64           `json:"message_id,omitempty"`
+	Caption                  string          `json:"caption,omitempty"`
+	ParseMode                string          `json:"parse_mode,omitempty"`
+	CaptionEntities          []MessageEntity `json:"caption_entities,omitempty"`
+	DisableNotification      bool            `json:"disable_notification,omitempty"`
+	ProtectContent           bool            `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64           `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{}     `json:"reply_markup,omitempty"`
 }
 
 type SendPhoto struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	Photo                    InputFile            `json:"photo,omitempty"`
-	Caption                  string               `json:"caption,omitempty"`
-	ParseMode                string               `json:"parse_mode,omitempty"`
-	CaptionEntities          []MessageEntity      `json:"caption_entities,omitempty"`
-	HasSpoiler               bool                 `json:"has_spoiler,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64           `json:"chat_id,omitempty"`
+	MessageThreadId          int64           `json:"message_thread_id,omitempty"`
+	Photo                    InputFile       `json:"photo,omitempty"`
+	Caption                  string          `json:"caption,omitempty"`
+	ParseMode                string          `json:"parse_mode,omitempty"`
+	CaptionEntities          []MessageEntity `json:"caption_entities,omitempty"`
+	HasSpoiler               bool            `json:"has_spoiler,omitempty"`
+	DisableNotification      bool            `json:"disable_notification,omitempty"`
+	ProtectContent           bool            `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64           `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{}     `json:"reply_markup,omitempty"`
 }
 
 type SendAudio struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	Audio                    InputFile            `json:"audio,omitempty"`
-	Caption                  string               `json:"caption,omitempty"`
-	ParseMode                string               `json:"parse_mode,omitempty"`
-	CaptionEntities          []MessageEntity      `json:"caption_entities,omitempty"`
-	Duration                 int64                `json:"duration,omitempty"`
-	Performer                string               `json:"performer,omitempty"`
-	Title                    string               `json:"title,omitempty"`
-	Thumbnail                InputFile            `json:"thumbnail,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64           `json:"chat_id,omitempty"`
+	MessageThreadId          int64           `json:"message_thread_id,omitempty"`
+	Audio                    InputFile       `json:"audio,omitempty"`
+	Caption                  string          `json:"caption,omitempty"`
+	ParseMode                string          `json:"parse_mode,omitempty"`
+	CaptionEntities          []MessageEntity `json:"caption_entities,omitempty"`
+	Duration                 int64           `json:"duration,omitempty"`
+	Performer                string          `json:"performer,omitempty"`
+	Title                    string          `json:"title,omitempty"`
+	Thumbnail                InputFile       `json:"thumbnail,omitempty"`
+	DisableNotification      bool            `json:"disable_notification,omitempty"`
+	ProtectContent           bool            `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64           `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{}     `json:"reply_markup,omitempty"`
 }
 
 type SendDocument struct {
-	ChatId                      int64                `json:"chat_id,omitempty"`
-	MessageThreadId             int64                `json:"message_thread_id,omitempty"`
-	Document                    InputFile            `json:"document,omitempty"`
-	Thumbnail                   InputFile            `json:"thumbnail,omitempty"`
-	Caption                     string               `json:"caption,omitempty"`
-	ParseMode                   string               `json:"parse_mode,omitempty"`
-	CaptionEntities             []MessageEntity      `json:"caption_entities,omitempty"`
-	DisableContentTypeDetection bool                 `json:"disable_content_type_detection,omitempty"`
-	DisableNotification         bool                 `json:"disable_notification,omitempty"`
-	ProtectContent              bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId            int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply    bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup                 InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                      int64           `json:"chat_id,omitempty"`
+	MessageThreadId             int64           `json:"message_thread_id,omitempty"`
+	Document                    InputFile       `json:"document,omitempty"`
+	Thumbnail                   InputFile       `json:"thumbnail,omitempty"`
+	Caption                     string          `json:"caption,omitempty"`
+	ParseMode                   string          `json:"parse_mode,omitempty"`
+	CaptionEntities             []MessageEntity `json:"caption_entities,omitempty"`
+	DisableContentTypeDetection bool            `json:"disable_content_type_detection,omitempty"`
+	DisableNotification         bool            `json:"disable_notification,omitempty"`
+	ProtectContent              bool            `json:"protect_content,omitempty"`
+	ReplyToMessageId            int64           `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply    bool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup                 interface{}     `json:"reply_markup,omitempty"`
 }
 
 type SendVideo struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	Video                    InputFile            `json:"video,omitempty"`
-	Duration                 int64                `json:"duration,omitempty"`
-	Width                    int64                `json:"width,omitempty"`
-	Height                   int64                `json:"height,omitempty"`
-	Thumbnail                InputFile            `json:"thumbnail,omitempty"`
-	Caption                  string               `json:"caption,omitempty"`
-	ParseMode                string               `json:"parse_mode,omitempty"`
-	CaptionEntities          []MessageEntity      `json:"caption_entities,omitempty"`
-	HasSpoiler               bool                 `json:"has_spoiler,omitempty"`
-	SupportsStreaming        bool                 `json:"supports_streaming,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64           `json:"chat_id,omitempty"`
+	MessageThreadId          int64           `json:"message_thread_id,omitempty"`
+	Video                    InputFile       `json:"video,omitempty"`
+	Duration                 int64           `json:"duration,omitempty"`
+	Width                    int64           `json:"width,omitempty"`
+	Height                   int64           `json:"height,omitempty"`
+	Thumbnail                InputFile       `json:"thumbnail,omitempty"`
+	Caption                  string          `json:"caption,omitempty"`
+	ParseMode                string          `json:"parse_mode,omitempty"`
+	CaptionEntities          []MessageEntity `json:"caption_entities,omitempty"`
+	HasSpoiler               bool            `json:"has_spoiler,omitempty"`
+	SupportsStreaming        bool            `json:"supports_streaming,omitempty"`
+	DisableNotification      bool            `json:"disable_notification,omitempty"`
+	ProtectContent           bool            `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64           `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{}     `json:"reply_markup,omitempty"`
 }
 
 type SendAnimation struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	Animation                InputFile            `json:"animation,omitempty"`
-	Duration                 int64                `json:"duration,omitempty"`
-	Width                    int64                `json:"width,omitempty"`
-	Height                   int64                `json:"height,omitempty"`
-	Thumbnail                InputFile            `json:"thumbnail,omitempty"`
-	Caption                  string               `json:"caption,omitempty"`
-	ParseMode                string               `json:"parse_mode,omitempty"`
-	CaptionEntities          []MessageEntity      `json:"caption_entities,omitempty"`
-	HasSpoiler               bool                 `json:"has_spoiler,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64           `json:"chat_id,omitempty"`
+	MessageThreadId          int64           `json:"message_thread_id,omitempty"`
+	Animation                InputFile       `json:"animation,omitempty"`
+	Duration                 int64           `json:"duration,omitempty"`
+	Width                    int64           `json:"width,omitempty"`
+	Height                   int64           `json:"height,omitempty"`
+	Thumbnail                InputFile       `json:"thumbnail,omitempty"`
+	Caption                  string          `json:"caption,omitempty"`
+	ParseMode                string          `json:"parse_mode,omitempty"`
+	CaptionEntities          []MessageEntity `json:"caption_entities,omitempty"`
+	HasSpoiler               bool            `json:"has_spoiler,omitempty"`
+	DisableNotification      bool            `json:"disable_notification,omitempty"`
+	ProtectContent           bool            `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64           `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{}     `json:"reply_markup,omitempty"`
 }
 
 type SendVoice struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	Voice                    InputFile            `json:"voice,omitempty"`
-	Caption                  string               `json:"caption,omitempty"`
-	ParseMode                string               `json:"parse_mode,omitempty"`
-	CaptionEntities          []MessageEntity      `json:"caption_entities,omitempty"`
-	Duration                 int64                `json:"duration,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64           `json:"chat_id,omitempty"`
+	MessageThreadId          int64           `json:"message_thread_id,omitempty"`
+	Voice                    InputFile       `json:"voice,omitempty"`
+	Caption                  string          `json:"caption,omitempty"`
+	ParseMode                string          `json:"parse_mode,omitempty"`
+	CaptionEntities          []MessageEntity `json:"caption_entities,omitempty"`
+	Duration                 int64           `json:"duration,omitempty"`
+	DisableNotification      bool            `json:"disable_notification,omitempty"`
+	ProtectContent           bool            `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64           `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{}     `json:"reply_markup,omitempty"`
 }
 
 type SendVideoNote struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	VideoNote                InputFile            `json:"video_note,omitempty"`
-	Duration                 int64                `json:"duration,omitempty"`
-	Length                   int64                `json:"length,omitempty"`
-	Thumbnail                InputFile            `json:"thumbnail,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64       `json:"chat_id,omitempty"`
+	MessageThreadId          int64       `json:"message_thread_id,omitempty"`
+	VideoNote                InputFile   `json:"video_note,omitempty"`
+	Duration                 int64       `json:"duration,omitempty"`
+	Length                   int64       `json:"length,omitempty"`
+	Thumbnail                InputFile   `json:"thumbnail,omitempty"`
+	DisableNotification      bool        `json:"disable_notification,omitempty"`
+	ProtectContent           bool        `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64       `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool        `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{} `json:"reply_markup,omitempty"`
 }
 
 type SendMediaGroup struct {
@@ -168,84 +168,84 @@ type SendMediaGroup struct {
 }
 
 type SendLocation struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	Latitude                 float32              `json:"latitude,omitempty"`
-	Longitude                float32              `json:"longitude,omitempty"`
-	HorizontalAccuracy       float32              `json:"horizontal_accuracy,omitempty"`
-	LivePeriod               int64                `json:"live_period,omitempty"`
-	Heading                  int64                `json:"heading,omitempty"`
-	ProximityAlertRadius     int64                `json:"proximity_alert_radius,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64       `json:"chat_id,omitempty"`
+	MessageThreadId          int64       `json:"message_thread_id,omitempty"`
+	Latitude                 float32     `json:"latitude,omitempty"`
+	Longitude                float32     `json:"longitude,omitempty"`
+	HorizontalAccuracy       float32     `json:"horizontal_accuracy,omitempty"`
+	LivePeriod               int64       `json:"live_period,omitempty"`
+	Heading                  int64       `json:"heading,omitempty"`
+	ProximityAlertRadius     int64       `json:"proximity_alert_radius,omitempty"`
+	DisableNotification      bool        `json:"disable_notification,omitempty"`
+	ProtectContent           bool        `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64       `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool        `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{} `json:"reply_markup,omitempty"`
 }
 
 type SendVenue struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	Latitude                 float32              `json:"latitude,omitempty"`
-	Longitude                float32              `json:"longitude,omitempty"`
-	Title                    string               `json:"title,omitempty"`
-	Address                  string               `json:"address,omitempty"`
-	FoursquareId             string               `json:"foursquare_id,omitempty"`
-	FoursquareType           string               `json:"foursquare_type,omitempty"`
-	GooglePlaceId            string               `json:"google_place_id,omitempty"`
-	GooglePlaceType          string               `json:"google_place_type,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64       `json:"chat_id,omitempty"`
+	MessageThreadId          int64       `json:"message_thread_id,omitempty"`
+	Latitude                 float32     `json:"latitude,omitempty"`
+	Longitude                float32     `json:"longitude,omitempty"`
+	Title                    string      `json:"title,omitempty"`
+	Address                  string      `json:"address,omitempty"`
+	FoursquareId             string      `json:"foursquare_id,omitempty"`
+	FoursquareType           string      `json:"foursquare_type,omitempty"`
+	GooglePlaceId            string      `json:"google_place_id,omitempty"`
+	GooglePlaceType          string      `json:"google_place_type,omitempty"`
+	DisableNotification      bool        `json:"disable_notification,omitempty"`
+	ProtectContent           bool        `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64       `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool        `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{} `json:"reply_markup,omitempty"`
 }
 
 type SendContact struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	PhoneNumber              string               `json:"phone_number,omitempty"`
-	FirstName                string               `json:"first_name,omitempty"`
-	LastName                 string               `json:"last_name,omitempty"`
-	Vcard                    string               `json:"vcard,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64       `json:"chat_id,omitempty"`
+	MessageThreadId          int64       `json:"message_thread_id,omitempty"`
+	PhoneNumber              string      `json:"phone_number,omitempty"`
+	FirstName                string      `json:"first_name,omitempty"`
+	LastName                 string      `json:"last_name,omitempty"`
+	Vcard                    string      `json:"vcard,omitempty"`
+	DisableNotification      bool        `json:"disable_notification,omitempty"`
+	ProtectContent           bool        `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64       `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool        `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{} `json:"reply_markup,omitempty"`
 }
 
 type SendPoll struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	Question                 string               `json:"question,omitempty"`
-	Options                  []string             `json:"options,omitempty"`
-	IsAnonymous              bool                 `json:"is_anonymous,omitempty"`
-	Type                     string               `json:"type,omitempty"`
-	AllowsMultipleAnswers    bool                 `json:"allows_multiple_answers,omitempty"`
-	CorrectOptionId          int64                `json:"correct_option_id,omitempty"`
-	Explanation              string               `json:"explanation,omitempty"`
-	ExplanationParseMode     string               `json:"explanation_parse_mode,omitempty"`
-	ExplanationEntities      []MessageEntity      `json:"explanation_entities,omitempty"`
-	OpenPeriod               int64                `json:"open_period,omitempty"`
-	CloseDate                int64                `json:"close_date,omitempty"`
-	IsClosed                 bool                 `json:"is_closed,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64           `json:"chat_id,omitempty"`
+	MessageThreadId          int64           `json:"message_thread_id,omitempty"`
+	Question                 string          `json:"question,omitempty"`
+	Options                  []string        `json:"options,omitempty"`
+	IsAnonymous              bool            `json:"is_anonymous,omitempty"`
+	Type                     string          `json:"type,omitempty"`
+	AllowsMultipleAnswers    bool            `json:"allows_multiple_answers,omitempty"`
+	CorrectOptionId          int64           `json:"correct_option_id,omitempty"`
+	Explanation              string          `json:"explanation,omitempty"`
+	ExplanationParseMode     string          `json:"explanation_parse_mode,omitempty"`
+	ExplanationEntities      []MessageEntity `json:"explanation_entities,omitempty"`
+	OpenPeriod               int64           `json:"open_period,omitempty"`
+	CloseDate                int64           `json:"close_date,omitempty"`
+	IsClosed                 bool            `json:"is_closed,omitempty"`
+	DisableNotification      bool            `json:"disable_notification,omitempty"`
+	ProtectContent           bool            `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64           `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool            `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{}     `json:"reply_markup,omitempty"`
 }
 
 type SendDice struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	Emoji                    string               `json:"emoji,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64       `json:"chat_id,omitempty"`
+	MessageThreadId          int64       `json:"message_thread_id,omitempty"`
+	Emoji                    string      `json:"emoji,omitempty"`
+	DisableNotification      bool        `json:"disable_notification,omitempty"`
+	ProtectContent           bool        `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64       `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool        `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{} `json:"reply_markup,omitempty"`
 }
 
 type SendChatAction struct {
@@ -495,19 +495,19 @@ type AnswerCallbackQuery struct {
 }
 
 type SetMyCommands struct {
-	Commands     []BotCommand    `json:"commands,omitempty"`
-	Scope        BotCommandScope `json:"scope,omitempty"`
-	LanguageCode string          `json:"language_code,omitempty"`
+	Commands     []BotCommand `json:"commands,omitempty"`
+	Scope        interface{}  `json:"scope,omitempty"`
+	LanguageCode string       `json:"language_code,omitempty"`
 }
 
 type DeleteMyCommands struct {
-	Scope        BotCommandScope `json:"scope,omitempty"`
-	LanguageCode string          `json:"language_code,omitempty"`
+	Scope        interface{} `json:"scope,omitempty"`
+	LanguageCode string      `json:"language_code,omitempty"`
 }
 
 type GetMyCommands struct {
-	Scope        BotCommandScope `json:"scope,omitempty"`
-	LanguageCode string          `json:"language_code,omitempty"`
+	Scope        interface{} `json:"scope,omitempty"`
+	LanguageCode string      `json:"language_code,omitempty"`
 }
 
 type SetMyName struct {
@@ -538,8 +538,8 @@ type GetMyShortDescription struct {
 }
 
 type SetChatMenuButton struct {
-	ChatId     int64      `json:"chat_id,omitempty"`
-	MenuButton MenuButton `json:"menu_button,omitempty"`
+	ChatId     int64       `json:"chat_id,omitempty"`
+	MenuButton interface{} `json:"menu_button,omitempty"`
 }
 
 type GetChatMenuButton struct {
@@ -556,64 +556,64 @@ type GetMyDefaultAdministratorRights struct {
 }
 
 type EditMessageText struct {
-	ChatId                int64                `json:"chat_id,omitempty"`
-	MessageId             int64                `json:"message_id,omitempty"`
-	InlineMessageId       string               `json:"inline_message_id,omitempty"`
-	Text                  string               `json:"text,omitempty"`
-	ParseMode             string               `json:"parse_mode,omitempty"`
-	Entities              []MessageEntity      `json:"entities,omitempty"`
-	DisableWebPagePreview bool                 `json:"disable_web_page_preview,omitempty"`
-	ReplyMarkup           InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                int64           `json:"chat_id,omitempty"`
+	MessageId             int64           `json:"message_id,omitempty"`
+	InlineMessageId       string          `json:"inline_message_id,omitempty"`
+	Text                  string          `json:"text,omitempty"`
+	ParseMode             string          `json:"parse_mode,omitempty"`
+	Entities              []MessageEntity `json:"entities,omitempty"`
+	DisableWebPagePreview bool            `json:"disable_web_page_preview,omitempty"`
+	ReplyMarkup           interface{}     `json:"reply_markup,omitempty"`
 }
 
 type EditMessageCaption struct {
-	ChatId          int64                `json:"chat_id,omitempty"`
-	MessageId       int64                `json:"message_id,omitempty"`
-	InlineMessageId string               `json:"inline_message_id,omitempty"`
-	Caption         string               `json:"caption,omitempty"`
-	ParseMode       string               `json:"parse_mode,omitempty"`
-	CaptionEntities []MessageEntity      `json:"caption_entities,omitempty"`
-	ReplyMarkup     InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId          int64           `json:"chat_id,omitempty"`
+	MessageId       int64           `json:"message_id,omitempty"`
+	InlineMessageId string          `json:"inline_message_id,omitempty"`
+	Caption         string          `json:"caption,omitempty"`
+	ParseMode       string          `json:"parse_mode,omitempty"`
+	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
+	ReplyMarkup     interface{}     `json:"reply_markup,omitempty"`
 }
 
 type EditMessageMedia struct {
-	ChatId          int64                `json:"chat_id,omitempty"`
-	MessageId       int64                `json:"message_id,omitempty"`
-	InlineMessageId string               `json:"inline_message_id,omitempty"`
-	Media           InputMedia           `json:"media,omitempty"`
-	ReplyMarkup     InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId          int64       `json:"chat_id,omitempty"`
+	MessageId       int64       `json:"message_id,omitempty"`
+	InlineMessageId string      `json:"inline_message_id,omitempty"`
+	Media           interface{} `json:"media,omitempty"`
+	ReplyMarkup     interface{} `json:"reply_markup,omitempty"`
 }
 
 type EditMessageLiveLocation struct {
-	ChatId               int64                `json:"chat_id,omitempty"`
-	MessageId            int64                `json:"message_id,omitempty"`
-	InlineMessageId      string               `json:"inline_message_id,omitempty"`
-	Latitude             float32              `json:"latitude,omitempty"`
-	Longitude            float32              `json:"longitude,omitempty"`
-	HorizontalAccuracy   float32              `json:"horizontal_accuracy,omitempty"`
-	Heading              int64                `json:"heading,omitempty"`
-	ProximityAlertRadius int64                `json:"proximity_alert_radius,omitempty"`
-	ReplyMarkup          InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId               int64       `json:"chat_id,omitempty"`
+	MessageId            int64       `json:"message_id,omitempty"`
+	InlineMessageId      string      `json:"inline_message_id,omitempty"`
+	Latitude             float32     `json:"latitude,omitempty"`
+	Longitude            float32     `json:"longitude,omitempty"`
+	HorizontalAccuracy   float32     `json:"horizontal_accuracy,omitempty"`
+	Heading              int64       `json:"heading,omitempty"`
+	ProximityAlertRadius int64       `json:"proximity_alert_radius,omitempty"`
+	ReplyMarkup          interface{} `json:"reply_markup,omitempty"`
 }
 
 type StopMessageLiveLocation struct {
-	ChatId          int64                `json:"chat_id,omitempty"`
-	MessageId       int64                `json:"message_id,omitempty"`
-	InlineMessageId string               `json:"inline_message_id,omitempty"`
-	ReplyMarkup     InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId          int64       `json:"chat_id,omitempty"`
+	MessageId       int64       `json:"message_id,omitempty"`
+	InlineMessageId string      `json:"inline_message_id,omitempty"`
+	ReplyMarkup     interface{} `json:"reply_markup,omitempty"`
 }
 
 type EditMessageReplyMarkup struct {
-	ChatId          int64                `json:"chat_id,omitempty"`
-	MessageId       int64                `json:"message_id,omitempty"`
-	InlineMessageId string               `json:"inline_message_id,omitempty"`
-	ReplyMarkup     InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId          int64       `json:"chat_id,omitempty"`
+	MessageId       int64       `json:"message_id,omitempty"`
+	InlineMessageId string      `json:"inline_message_id,omitempty"`
+	ReplyMarkup     interface{} `json:"reply_markup,omitempty"`
 }
 
 type StopPoll struct {
-	ChatId      int64                `json:"chat_id,omitempty"`
-	MessageId   int64                `json:"message_id,omitempty"`
-	ReplyMarkup InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId      int64       `json:"chat_id,omitempty"`
+	MessageId   int64       `json:"message_id,omitempty"`
+	ReplyMarkup interface{} `json:"reply_markup,omitempty"`
 }
 
 type DeleteMessage struct {
@@ -622,15 +622,15 @@ type DeleteMessage struct {
 }
 
 type SendSticker struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	Sticker                  InputFile            `json:"sticker,omitempty"`
-	Emoji                    string               `json:"emoji,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64       `json:"chat_id,omitempty"`
+	MessageThreadId          int64       `json:"message_thread_id,omitempty"`
+	Sticker                  InputFile   `json:"sticker,omitempty"`
+	Emoji                    string      `json:"emoji,omitempty"`
+	DisableNotification      bool        `json:"disable_notification,omitempty"`
+	ProtectContent           bool        `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64       `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool        `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{} `json:"reply_markup,omitempty"`
 }
 
 type GetStickerSet struct {
@@ -709,7 +709,7 @@ type DeleteStickerSet struct {
 
 type AnswerInlineQuery struct {
 	InlineQueryId string                   `json:"inline_query_id,omitempty"`
-	Results       []InlineQueryResult      `json:"results,omitempty"`
+	Results       []interface{}            `json:"results,omitempty"`
 	CacheTime     int64                    `json:"cache_time,omitempty"`
 	IsPersonal    bool                     `json:"is_personal,omitempty"`
 	NextOffset    string                   `json:"next_offset,omitempty"`
@@ -717,39 +717,39 @@ type AnswerInlineQuery struct {
 }
 
 type AnswerWebAppQuery struct {
-	WebAppQueryId string            `json:"web_app_query_id,omitempty"`
-	Result        InlineQueryResult `json:"result,omitempty"`
+	WebAppQueryId string      `json:"web_app_query_id,omitempty"`
+	Result        interface{} `json:"result,omitempty"`
 }
 
 type SendInvoice struct {
-	ChatId                    int64                `json:"chat_id,omitempty"`
-	MessageThreadId           int64                `json:"message_thread_id,omitempty"`
-	Title                     string               `json:"title,omitempty"`
-	Description               string               `json:"description,omitempty"`
-	Payload                   string               `json:"payload,omitempty"`
-	ProviderToken             string               `json:"provider_token,omitempty"`
-	Currency                  string               `json:"currency,omitempty"`
-	Prices                    []LabeledPrice       `json:"prices,omitempty"`
-	MaxTipAmount              int64                `json:"max_tip_amount,omitempty"`
-	SuggestedTipAmounts       []int64              `json:"suggested_tip_amounts,omitempty"`
-	StartParameter            string               `json:"start_parameter,omitempty"`
-	ProviderData              string               `json:"provider_data,omitempty"`
-	PhotoUrl                  string               `json:"photo_url,omitempty"`
-	PhotoSize                 int64                `json:"photo_size,omitempty"`
-	PhotoWidth                int64                `json:"photo_width,omitempty"`
-	PhotoHeight               int64                `json:"photo_height,omitempty"`
-	NeedName                  bool                 `json:"need_name,omitempty"`
-	NeedPhoneNumber           bool                 `json:"need_phone_number,omitempty"`
-	NeedEmail                 bool                 `json:"need_email,omitempty"`
-	NeedShippingAddress       bool                 `json:"need_shipping_address,omitempty"`
-	SendPhoneNumberToProvider bool                 `json:"send_phone_number_to_provider,omitempty"`
-	SendEmailToProvider       bool                 `json:"send_email_to_provider,omitempty"`
-	IsFlexible                bool                 `json:"is_flexible,omitempty"`
-	DisableNotification       bool                 `json:"disable_notification,omitempty"`
-	ProtectContent            bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId          int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply  bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup               InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                    int64          `json:"chat_id,omitempty"`
+	MessageThreadId           int64          `json:"message_thread_id,omitempty"`
+	Title                     string         `json:"title,omitempty"`
+	Description               string         `json:"description,omitempty"`
+	Payload                   string         `json:"payload,omitempty"`
+	ProviderToken             string         `json:"provider_token,omitempty"`
+	Currency                  string         `json:"currency,omitempty"`
+	Prices                    []LabeledPrice `json:"prices,omitempty"`
+	MaxTipAmount              int64          `json:"max_tip_amount,omitempty"`
+	SuggestedTipAmounts       []int64        `json:"suggested_tip_amounts,omitempty"`
+	StartParameter            string         `json:"start_parameter,omitempty"`
+	ProviderData              string         `json:"provider_data,omitempty"`
+	PhotoUrl                  string         `json:"photo_url,omitempty"`
+	PhotoSize                 int64          `json:"photo_size,omitempty"`
+	PhotoWidth                int64          `json:"photo_width,omitempty"`
+	PhotoHeight               int64          `json:"photo_height,omitempty"`
+	NeedName                  bool           `json:"need_name,omitempty"`
+	NeedPhoneNumber           bool           `json:"need_phone_number,omitempty"`
+	NeedEmail                 bool           `json:"need_email,omitempty"`
+	NeedShippingAddress       bool           `json:"need_shipping_address,omitempty"`
+	SendPhoneNumberToProvider bool           `json:"send_phone_number_to_provider,omitempty"`
+	SendEmailToProvider       bool           `json:"send_email_to_provider,omitempty"`
+	IsFlexible                bool           `json:"is_flexible,omitempty"`
+	DisableNotification       bool           `json:"disable_notification,omitempty"`
+	ProtectContent            bool           `json:"protect_content,omitempty"`
+	ReplyToMessageId          int64          `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply  bool           `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup               interface{}    `json:"reply_markup,omitempty"`
 }
 
 type CreateInvoiceLink struct {
@@ -789,19 +789,19 @@ type AnswerPreCheckoutQuery struct {
 }
 
 type SetPassportDataErrors struct {
-	UserId int64                  `json:"user_id,omitempty"`
-	Errors []PassportElementError `json:"errors,omitempty"`
+	UserId int64         `json:"user_id,omitempty"`
+	Errors []interface{} `json:"errors,omitempty"`
 }
 
 type SendGame struct {
-	ChatId                   int64                `json:"chat_id,omitempty"`
-	MessageThreadId          int64                `json:"message_thread_id,omitempty"`
-	GameShortName            string               `json:"game_short_name,omitempty"`
-	DisableNotification      bool                 `json:"disable_notification,omitempty"`
-	ProtectContent           bool                 `json:"protect_content,omitempty"`
-	ReplyToMessageId         int64                `json:"reply_to_message_id,omitempty"`
-	AllowSendingWithoutReply bool                 `json:"allow_sending_without_reply,omitempty"`
-	ReplyMarkup              InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatId                   int64       `json:"chat_id,omitempty"`
+	MessageThreadId          int64       `json:"message_thread_id,omitempty"`
+	GameShortName            string      `json:"game_short_name,omitempty"`
+	DisableNotification      bool        `json:"disable_notification,omitempty"`
+	ProtectContent           bool        `json:"protect_content,omitempty"`
+	ReplyToMessageId         int64       `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool        `json:"allow_sending_without_reply,omitempty"`
+	ReplyMarkup              interface{} `json:"reply_markup,omitempty"`
 }
 
 type SetGameScore struct {
