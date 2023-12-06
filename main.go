@@ -261,6 +261,30 @@ func (bot *bot) messageTypeCheck(update *Update, state string) (func(update *Upd
 	return bot.callbacks[messageType], messageType
 }
 
+func (bot*bot) GetFromId(update *Update) int64 {
+	var result int64
+
+	if update.Message.MessageId != 0 {
+		result = update.Message.Chat.Id
+	} else if update.EditedMessage.MessageId != 0 {
+		result = update.EditedMessage.Chat.Id
+	} else if update.ChannelPost.MessageId != 0 {
+		result = update.ChannelPost.Chat.Id
+	} else if update.InlineQuery.Id != "" {
+		result = update.InlineQuery.From.Id
+	} else if update.ChosenInlineResult.ResultId != "" {
+		result = update.ChosenInlineResult.From.Id
+	} else if update.CallbackQuery.Id != "" {
+		result = update.CallbackQuery.From.Id
+	} else if update.ShippingQuery.Id != "" {
+		result = update.ShippingQuery.From.Id
+	} else if update.PreCheckoutQuery.Id != "" {
+		result = update.PreCheckoutQuery.From.Id
+	}
+
+	return result
+}
+
 func (bot *bot) Run() {
 	var wgc = WaitGroupCount{
 		limit: PROCESSING_COUNT_LIMIT,
@@ -292,7 +316,13 @@ func (bot *bot) Run() {
 			}
 
 			// get current state for this user
-			state := bot.GetUserState(update.Message.From.Id)
+			userID := bot.GetFromId(&update)
+			if 0 == userID {
+				fmt.Println("From Id is 0, continue...")
+				wgc.Done()
+				continue
+			}
+			state := bot.GetUserState(userID)
 
 			// message type check
 			// (need to make available to use multiple states for one callback)
