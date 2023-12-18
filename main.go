@@ -17,11 +17,11 @@ type WaitGroupCount struct {
 	limit uint16
 }
 
-type bot struct {
+type Bot struct {
 	token            string
 	url              string
 	offset_to_update int64
-	callbacks        map[string]func(update *Update) error
+	callbacks        map[string]func(bot *Bot, update *Update) error
 	not_found        string
 	stateMachine     *stateMachine
 	//client           http.Client
@@ -29,11 +29,11 @@ type bot struct {
 
 const PROCESSING_COUNT_LIMIT = 1
 
-func NewBot(token string) *bot {
-	return &bot{
+func NewBot(token string) *Bot {
+	return &Bot{
 		token:        token,
 		url:          fmt.Sprintf("https://api.telegram.org/bot%s/", token),
-		callbacks:    make(map[string]func(update *Update) error),
+		callbacks:    make(map[string]func(bot *Bot, update *Update) error),
 		not_found:    "",
 		stateMachine: newStateMachine(),
 		/*
@@ -71,11 +71,11 @@ func (wg *WaitGroupCount) Wait() {
 	wg.wg.Wait()
 }
 
-func (bot *bot) SetUserState(userId int64, state string) {
+func (bot *Bot) SetUserState(userId int64, state string) {
 	bot.stateMachine.Set(userId, state)
 }
 
-func (bot *bot) GetUserState(userId int64) string {
+func (bot *Bot) GetUserState(userId int64) string {
 	state, ok := bot.stateMachine.Get(userId)
 	if !ok {
 		bot.stateMachine.Add(userId)
@@ -84,7 +84,7 @@ func (bot *bot) GetUserState(userId int64) string {
 	return state
 }
 
-func (bot *bot) Call(fn_struct interface{}) (string, error) {
+func (bot *Bot) Call(fn_struct interface{}) (string, error) {
 	if len(bot.token) == 0 {
 		return "", errors.New("Token of bot is not exist")
 	}
@@ -113,7 +113,7 @@ func (bot *bot) Call(fn_struct interface{}) (string, error) {
 	return string(body), nil
 }
 
-func (bot *bot) update() (*TelegramUpdate, error) {
+func (bot *Bot) update() (*TelegramUpdate, error) {
 	var gUpd = getUpdates{}
 	if bot.offset_to_update != 0 {
 		gUpd.Offset = bot.offset_to_update
@@ -134,10 +134,10 @@ func (bot *bot) update() (*TelegramUpdate, error) {
 	return &update_struct, nil
 }
 
-func (bot *bot) processing(update *Update, wgc *WaitGroupCount, fn func(update *Update) error) error {
+func (bot *Bot) processing(update *Update, wgc *WaitGroupCount, fn func(bot *Bot, update *Update) error) error {
 	defer wgc.Done()
 
-	return fn(update)
+	return fn(bot, update)
 }
 
 func getHash(some_ints *[]uint8) string {
@@ -150,7 +150,7 @@ func getHash(some_ints *[]uint8) string {
 	return result
 }
 
-func (bot *bot) L(message_type *[]uint8, state string, fn func(update *Update) error) error {
+func (bot *Bot) L(message_type *[]uint8, state string, fn func(bot *Bot, update *Update) error) error {
 	var hash_key = getHash(message_type) + state
 
 	bot.callbacks[hash_key] = fn
@@ -159,12 +159,12 @@ func (bot *bot) L(message_type *[]uint8, state string, fn func(update *Update) e
 	return nil
 }
 
-func (bot *bot) Set404(text string) {
+func (bot *Bot) Set404(text string) {
 	bot.not_found = text
 }
 
 // customization will be added later
-func (bot *bot) send404(update *Update) {
+func (bot *Bot) send404(update *Update) {
 	if len(bot.not_found) == 0 {
 		return
 	}
@@ -180,7 +180,7 @@ func (bot *bot) send404(update *Update) {
 	//fmt.Println("send404 output:", output)
 }
 
-func (bot *bot) messageTypeCheck(update *Update, state string) (func(update *Update) error, string) {
+func (bot *Bot) messageTypeCheck(update *Update, state string) (func(bot *Bot, update *Update) error, string) {
 	var messageType = ""
 
 	//M_COMMAND
@@ -261,7 +261,7 @@ func (bot *bot) messageTypeCheck(update *Update, state string) (func(update *Upd
 	return bot.callbacks[messageType], messageType
 }
 
-func (bot*bot) GetFromId(update *Update) int64 {
+func (bot *Bot) GetFromId(update *Update) int64 {
 	var result int64
 
 	if update.Message.MessageId != 0 {
@@ -285,7 +285,7 @@ func (bot*bot) GetFromId(update *Update) int64 {
 	return result
 }
 
-func (bot *bot) Run() {
+func (bot *Bot) Run() {
 	var wgc = WaitGroupCount{
 		limit: PROCESSING_COUNT_LIMIT,
 	}
