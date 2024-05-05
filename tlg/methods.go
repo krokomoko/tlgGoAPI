@@ -1,4 +1,4 @@
-package tlgGoAPI
+package tlg
 
 import "errors"
 
@@ -821,7 +821,7 @@ type GetGameHighScores struct {
 	InlineMessageId string `json:"inline_message_id,omitempty"`
 }
 
-type getUpdates struct {
+type GetUpdates struct {
 	Offset         int64    `json:"offset,omitempty"`
 	Limit          int64    `json:"limit,omitempty"`
 	Timeout        int64    `json:"timeout,omitempty"`
@@ -842,7 +842,7 @@ type deleteWebhook struct {
 	DropPendingUpdates bool `json:"drop_pending_updates,omitempty"`
 }
 
-func getFuncName(fn_struct interface{}) (string, error) {
+func GetFuncName(fn_struct interface{}) (string, error) {
 	switch fn_struct.(type) {
 	case SetPassportDataErrors:
 		return "setPassportDataErrors", nil
@@ -1056,7 +1056,7 @@ func getFuncName(fn_struct interface{}) (string, error) {
 		return "setGameScore", nil
 	case GetGameHighScores:
 		return "getGameHighScores", nil
-	case getUpdates:
+	case GetUpdates:
 		return "getUpdates", nil
 	case setWebhook:
 		return "setWebhook", nil

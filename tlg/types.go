@@ -1,20 +1,4 @@
-package tlgGoAPI
-
-// Messages type
-
-const (
-	M_COMMAND = iota + 1
-	M_TEXT
-	M_IMAGE
-	M_VIDEO
-	M_VOICE
-	M_AUDIO
-	M_GIF
-	M_DOCUMENT
-	M_STICKER
-	M_URL
-	M_CALLBACK
-)
+package tlg
 
 type TelegramUpdate struct {
 	Ok     bool     `json:"ok"`
