@@ -7,24 +7,135 @@ import (
 	"github.com/krokomoko/tlgGoAPI/tlg"
 )
 
-func SendKeyboard(client *Client, text string, keyboard *constructor.Keyboard) (err error) {
+/*
+args:
+1 - keyboard  *constructor.Keyboard
+2 - ProtectContent bool
+3 - DisableNotification bool
+4 - DisableWebPagePreview bool
+*/
+func SendMessage(client *Client, text string, args ...interface{}) (err error) {
 	defer func() {
 		if r := recover(); r != nil {
-			err = fmt.Errorf("PANIC - bot, SendKeyboard: %s", r)
+			err = fmt.Errorf("PANIC - bot, SendText: %s", r)
 		}
 	}()
 
-	keyboardMarkup, err := keyboard.Compile()
-	if err != nil {
-		err = fmt.Errorf("ERROR - SendKeyboard, compile keyboard: %s", err)
-		return
+	tlgSendMessage := tlg.SendMessage{
+		ChatId:    client.ID,
+		Text:      text,
+		ParseMode: "HTML",
 	}
 
-	_, err = Call(tlg.SendMessage{
-		ChatId:      client.ID,
-		Text:        text,
-		ParseMode:   "HTML",
-		ReplyMarkup: *keyboardMarkup,
+	for argInd, arg := range args {
+		switch argInd {
+		case 0:
+			if keyboard, ok := arg.(*constructor.Keyboard); ok {
+				keyboardMarkup, err := keyboard.Compile()
+				if err != nil {
+					err = fmt.Errorf("ERROR - SendKeyboard, compile keyboard: %s", err)
+					return err
+				}
+				tlgSendMessage.ReplyMarkup = *keyboardMarkup
+			}
+
+		case 1:
+			if protectContent, ok := arg.(bool); !ok {
+				err = fmt.Errorf(
+					"ERROR - SendText, ProtectContent parameter wrong data type: %T",
+					args[1],
+				)
+				return
+			} else {
+				tlgSendMessage.ProtectContent = protectContent
+			}
+
+		case 2:
+			if disableNotification, ok := arg.(bool); !ok {
+				err = fmt.Errorf(
+					"ERROR - SendText, DisableNotification parameter wrong data type: %T",
+					args[1],
+				)
+				return
+			} else {
+				tlgSendMessage.DisableNotification = disableNotification
+			}
+
+		case 3:
+			if disableWebPagePreview, ok := arg.(bool); !ok {
+				err = fmt.Errorf(
+					"ERROR - SendText, DisableWebPagePreview parameter wrong data type: %T",
+					args[1],
+				)
+				return
+			} else {
+				tlgSendMessage.DisableWebPagePreview = disableWebPagePreview
+			}
+		}
+
+	}
+
+	_, err = Call(tlgSendMessage)
+
+	return
+}
+
+/*
+args:
+1 - keyboard *constructor.Keyboard
+*/
+func EditMessageText(client *Client, messageId int64, text string, args ...interface{}) (err error) {
+	defer func() {
+		if r := recover(); r != nil {
+			err = fmt.Errorf("PANIC - EditMessage: %s", r)
+		}
+	}()
+
+	tlgEditMessageText := tlg.EditMessageText{
+		ChatId:    client.ID,
+		MessageId: messageId,
+		Text:      text,
+	}
+
+	if len(args) > 0 {
+		if keyboard, ok := args[0].(*constructor.Keyboard); ok {
+			keyboardMarkup, err := keyboard.Compile()
+			if err != nil {
+				err = fmt.Errorf(
+					"ERROR - EditMessageText, compile keyboard: %s",
+					err,
+				)
+				return err
+			}
+			tlgEditMessageText.ReplyMarkup = *keyboardMarkup
+		}
+	}
+
+	_, err = Call(tlgEditMessageText)
+
+	return
+}
+
+/*
+add - additional parameters:
+1. caption  string
+2. keyboard
+3. has_spoiler bool
+4. disable_notifiaction bool
+5. protect_content bool
+*/
+func SendPhotoByURL(client *Client, photoURL tlg.InputFile, add ...interface{}) (err error) {
+	defer func() {
+		if r := recover(); r != nil {
+			err = fmt.Errorf("PANIC - SendPhotoByURL: %s", r)
+		}
+	}()
+
+	_, err = Call(tlg.SendPhoto{
+		ChatId: client.ID,
+		Photo:  photoURL,
+		//HasSpoiler: true,
+		Caption: "some",
 	})
 
 	return
