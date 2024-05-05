@@ -87,7 +87,7 @@ args:
 func EditMessageText(client *Client, messageId int64, text string, args ...interface{}) (err error) {
 	defer func() {
 		if r := recover(); r != nil {
-			err = fmt.Errorf("PANIC - EditMessage: %s", r)
+			err = fmt.Errorf("PANIC - EditMessageText: %s", r)
 		}
 	}()
 
@@ -117,6 +117,42 @@ func EditMessageText(client *Client, messageId int64, text string, args ...inter
 }
 
 /*
+args:
+1 - keyboard *constructor.Keyboard
+*/
+func EditMessageCaption(client *Client, messageId int64, caption string, args ...interface{}) (err error) {
+	defer func() {
+		if r := recover(); r != nil {
+			err = fmt.Errorf("PANIC - EditMessageCaption: %s", r)
+		}
+	}()
+
+	tlgEditMessageCaption := tlg.EditMessageCaption{
+		ChatId:    client.ID,
+		MessageId: messageId,
+		Caption:   caption,
+	}
+
+	if len(args) > 0 {
+		if keyboard, ok := args[0].(*constructor.Keyboard); ok {
+			keyboardMarkup, err := keyboard.Compile()
+			if err != nil {
+				err = fmt.Errorf(
+					"ERROR - EditMessageCaption, compile keyboard: %s",
+					err,
+				)
+				return err
+			}
+			tlgEditMessageCaption.ReplyMarkup = *keyboardMarkup
+		}
+	}
+
+	_, err = Call(tlgEditMessageCaption)
+
+	return
+}
+
+/*
 add - additional parameters:
 1. caption  string
 2. keyboard
@@ -124,19 +160,50 @@ add - additional parameters:
 4. disable_notifiaction bool
 5. protect_content bool
 */
-func SendPhotoByURL(client *Client, photoURL tlg.InputFile, add ...interface{}) (err error) {
+func SendPhotoByURL(client *Client, photoURL tlg.InputFile, args ...interface{}) (err error) {
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - SendPhotoByURL: %s", r)
 		}
 	}()
 
-	_, err = Call(tlg.SendPhoto{
+	tlgSendPhoto := tlg.SendPhoto{
 		ChatId: client.ID,
 		Photo:  photoURL,
-		//HasSpoiler: true,
-		Caption: "some",
-	})
+	}
+
+	for argInd, arg := range args {
+		switch argInd {
+		case 0:
+			if caption, ok := arg.(string); ok && caption != "" {
+				tlgSendPhoto.Caption = caption
+			}
+		case 1:
+			if keyboard, ok := arg.(*constructor.Keyboard); ok {
+				keyboardMarkup, err := keyboard.Compile()
+				if err != nil {
+					err = fmt.Errorf("ERROR - SendPhotoByURL, compile keyboard: %s", err)
+					return err
+				}
+				tlgSendPhoto.ReplyMarkup = *keyboardMarkup
+			}
+
+		case 2:
+			if hasSpoiler, ok := arg.(bool); ok {
+				tlgSendPhoto.HasSpoiler = hasSpoiler
+			}
+		case 3:
+			if disableNotification, ok := arg.(bool); ok {
+				tlgSendPhoto.DisableNotification = disableNotification
+			}
+		case 4:
+			if protectContent, ok := arg.(bool); ok {
+				tlgSendPhoto.ProtectContent = protectContent
+			}
+		}
+	}
+
+	_, err = Call(tlgSendPhoto)
 
 	return
 }
