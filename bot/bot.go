@@ -133,12 +133,8 @@ func GetMessageTypeCallback(messageTypeHash string) (fn func(client *Client, upd
 
 	var ok bool
 	if fn, ok = messageTypes[messageTypeHash]; !ok {
-		err = fmt.Errorf(
-			"ERROR - GetMessageTypeCallback, not registered message type with hash \"%s\"",
-			messageTypeHash,
-		)
-
-		return
+		fn = nil
+		err = nil
 	}
 
 	return

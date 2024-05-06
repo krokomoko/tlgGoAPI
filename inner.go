@@ -191,11 +191,22 @@ func getMessageType(update *tlg.Update) (messageType string, err error) {
 func getSignal(client *bot.Client, update *tlg.Update, messageType string) (signalName string, err error) {
 	defer func() {
 		if r := recover(); r != nil {
-			err = fmt.Errorf("PANIC - bot, getSignal: %s", r)
+			err = fmt.Errorf("PANIC - getSignal: %s", r)
 		}
 	}()
 
 	callback, err := bot.GetMessageTypeCallback(messageType)
+	if err != nil {
+		return "", fmt.Errorf(
+			"ERROR - getSignal, getting message type callback: %s",
+			err,
+		)
+	}
+	if callback == nil {
+		return "", fmt.Errorf(
+			"ERROR - getSignal, not registered message type",
+		)
+	}
 
 	signalName, err = callback(client, update)
 
