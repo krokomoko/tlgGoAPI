@@ -1,35 +1,41 @@
 # tlgGoAPI
 
-Simple Golang API for use Telegram Bot API
+Telegram BOT API with Golang
 
 ## How to use
 
-### Creating bot instance
+1. Set token
+2. Set possible states of client
+3. Set states transition by clients signal
+4. Set functions for detect signal by message types
+5. Run the bot
 
-First create new Bot instance:
+#### Set token
 
-	token := "" // your telegram bot api token
-    bot := tlgGoAPI.NewBot(token)
-	
-### Setting up a callback
-	
-Next add your callbacks for special input messages:
+	import "github.com/krokomoko/tlgGoAPI/bot"
+	//...
+	bot.SetToken("some token")
 
-    messageTypes := []uint8{tlgGoAPI.M_COMMAND, tlgGoAPI.M_IMAGE}
-    bot.L(&messageTypes, "start", func(update *tlgGoAPI.Update) error {
-		_, err := bot.Call(tlgGoAPI.SendMessage {
-			ChatId: update.Message.Chat.Id,
-			Text: "hello, my friend!"
-		})
-		
-		if err != nil {
-			return err
-		}
-		
-		return nil
-	})
+#### Set possible states of client
 
-M_COMMAND and M_IMAGE - types of input messagges like:
+	bot.SetStates("state 1", "state 2", "state 3" [, ...other])
+
+#### Set states transition by clients signal
+
+	bot.SetTransition("init", "state 1", "some signal", callback)
+
+Callbacks function type be like:
+
+	import "github.com/krokomoko/tlgGoAPI/tlg"
+	//...
+	func(client *bot.Client, update *tlg.Update) error
+
+#### Set functions for detect signal by message
+
+	bot.SetMessageType(detectFunc, M_TYPE_1, M_TYPE_2, M_TYPE_3 [, ...other])
+
+Message types:
+
 * M_COMMAND
 * M_TEXT
 * M_IMAGE
@@ -41,24 +47,12 @@ M_COMMAND and M_IMAGE - types of input messagges like:
 * M_STICKER
 * M_URL
 
-"start" is the state the user must be in for the message to be processed.
+M_TEXT - message type without any other message types
 
-### Change user state
+Detect function type be like:
 
-To change user state use **SetUserState** method of bot instance:
+	func(client *bot.Client, update *tlg.Update) (string, error)
 
-	userId := update.Message.From.Id
-	state := "some new state"
-	bot.SetUserState(userId, state)
-	
-### Set 404 message
+#### Run the bot
 
-If you want to respond to a user who sent an unscheduled message that you are not expecting at the moment, set an automatic 404 message for this case
-
-	bot.Set404("Sorry, I can't understand you")
-
-## Other
-
-The api contains all the same data types and methods that are presented on the official [telegram bot API page](https://core.telegram.org/bots/api).
-
-
+	bot.Run()
