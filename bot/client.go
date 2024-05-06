@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"slices"
-	"time"
 
 	"github.com/redis/go-redis/v9"
 	"gorm.io/driver/sqlite"
@@ -70,7 +69,7 @@ func SetupRedisSettings(addr, password string, db int) (err error) {
 			context.Background(),
 			fmt.Sprintf("%s:%d", redisPrefixKey, client.ID),
 			client.State.Name,
-			time.Duration(redisClientDuration),
+			0,
 		).Err(); err != nil {
 			err = fmt.Errorf(
 				"ERROR - SetupRedisSettings, setting client to redis: %s",
@@ -237,7 +236,7 @@ func GetClient(id int64) (client *Client, err error) {
 				context.Background(),
 				fmt.Sprintf("%s:%d", redisPrefixKey, id),
 				clientState,
-				time.Duration(redisClientDuration),
+				0,
 			).Err(); err != nil {
 				err = fmt.Errorf("ERROR - GetClient, set client to redis: %s", err)
 				return
@@ -322,7 +321,7 @@ func (client *Client) save() (err error) {
 		context.Background(),
 		fmt.Sprintf("%s:%d", redisPrefixKey, client.ID),
 		client.State.Name,
-		time.Duration(redisClientDuration),
+		0,
 	).Err()
 
 	return

@@ -37,7 +37,6 @@ func Run() error {
 			if err := bot.SaveClients(); err != nil {
 				log.Fatal("ERROR - SaveClients:", err)
 			}
-
 		}
 
 		updates, err := getUpdates()
