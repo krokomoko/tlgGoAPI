@@ -331,7 +331,6 @@ func (client *Client) SetState(stateName string) (err error) {
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - Client SetState: %s", r)
-			log.Println(err)
 		}
 	}()
 

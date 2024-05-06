@@ -3,7 +3,6 @@ package tlgGoAPI
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"sync"
 
 	"github.com/krokomoko/tlgGoAPI/bot"
@@ -47,7 +46,6 @@ func getUpdates() (tlgUpdate *tlg.TelegramUpdate, err error) {
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - getUpdates: %s", r)
-			log.Println(err)
 		}
 	}()
 
@@ -76,7 +74,6 @@ func getClient(update *tlg.Update) (client *bot.Client, err error) {
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - getClient: %s", r)
-			log.Println(err)
 		}
 	}()
 
@@ -108,12 +105,10 @@ func getClient(update *tlg.Update) (client *bot.Client, err error) {
 	return
 }
 
-// TODO: check message types order
 func getMessageType(update *tlg.Update) (messageType string, err error) {
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - getMessageType: %s", r)
-			log.Println(err)
 		}
 	}()
 
@@ -156,11 +151,6 @@ func getMessageType(update *tlg.Update) (messageType string, err error) {
 		messageType += fmt.Sprintf("%d.", M_GIF)
 	}
 
-	// M_CALLBACK
-	if update.CallbackQuery.Id != "" {
-		messageType += fmt.Sprintf("%d.", M_CALLBACK)
-	}
-
 	// M_DOCUMENT
 	if len(update.Message.Document.FileId) > 0 {
 		messageType += fmt.Sprintf("%d.", M_DOCUMENT)
@@ -185,6 +175,11 @@ func getMessageType(update *tlg.Update) (messageType string, err error) {
 		messageType += fmt.Sprintf("%d.", M_URL)
 	}
 
+	// M_CALLBACK
+	if update.CallbackQuery.Id != "" {
+		messageType += fmt.Sprintf("%d.", M_CALLBACK)
+	}
+
 	// M_TEXT
 	if 0 == len(messageType) {
 		messageType += fmt.Sprintf("%d.", M_TEXT)
@@ -197,7 +192,6 @@ func getSignal(client *bot.Client, update *tlg.Update, messageType string) (sign
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - bot, getSignal: %s", r)
-			log.Println(err)
 		}
 	}()
 

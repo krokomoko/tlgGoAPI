@@ -2,7 +2,6 @@ package tlgGoAPI
 
 import (
 	"fmt"
-	"log"
 	"time"
 )
 
@@ -31,7 +30,6 @@ func SetUpdateOffset(offset int64) (err error) {
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - bot, SetUpdateOffset: %s", r)
-			log.Println(err)
 		}
 	}()
 
@@ -44,7 +42,6 @@ func SetProcessingCountLimit(count uint16) (err error) {
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - bot, SetProcessingCountLimit: %s", r)
-			log.Println(err)
 		}
 	}()
 

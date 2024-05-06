@@ -6,7 +6,6 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"sort"
 
@@ -26,7 +25,6 @@ func SetStates(stateNames ...string) (err error) {
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - bot, SetStates: %s", r)
-			log.Println(err)
 		}
 	}()
 
@@ -54,7 +52,6 @@ func SetTransition(
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - bot, SetTransition: %s", r)
-			log.Println(err)
 		}
 	}()
 
@@ -99,7 +96,6 @@ func SetMessageType(
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - bot, SetMessageType: %s", r)
-			log.Println(err)
 		}
 	}()
 
@@ -132,7 +128,6 @@ func GetMessageTypeCallback(messageTypeHash string) (fn func(client *Client, upd
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - GetMessageTypeCallback: %s", r)
-			log.Println(err)
 		}
 	}()
 
@@ -153,7 +148,6 @@ func MakeTransition(client *Client, update *tlg.Update, signal string) (err erro
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - MakeTransition: %s", r)
-			log.Println(err)
 		}
 	}()
 
@@ -171,7 +165,7 @@ func MakeTransition(client *Client, update *tlg.Update, signal string) (err erro
 	if client.State.transitions[signal].exitAction != nil {
 		err = client.State.transitions[signal].exitAction(client, update)
 		if err != nil {
-			log.Println(
+			err = fmt.Errorf(
 				"ERROR - MakeTransition, exitAction from state \"%s\" by signal \"%s\"",
 				client.State.Name,
 				signal,
@@ -183,7 +177,7 @@ func MakeTransition(client *Client, update *tlg.Update, signal string) (err erro
 	if client.State.transitions[signal].next.loginAction != nil {
 		err = client.State.transitions[signal].next.loginAction(client, update)
 		if err != nil {
-			log.Println(
+			err = fmt.Errorf(
 				"ERROR - MakeTransition, loginAction from state \"%s\" to state \"%s\" by signal \"%s\"",
 				client.State.Name,
 				client.State.transitions[signal].next.Name,
@@ -203,7 +197,6 @@ func Call(fn_struct interface{}) (responseBody string, err error) {
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - Call tlg method: %s", r)
-			log.Println(err)
 		}
 	}()
 

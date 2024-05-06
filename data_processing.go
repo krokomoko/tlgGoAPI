@@ -2,7 +2,6 @@ package tlgGoAPI
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/krokomoko/tlgGoAPI/tlg"
 )
@@ -11,7 +10,6 @@ func GetCallbackQueryData(update *tlg.Update) (data string, err error) {
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - GetCallbackQueryData: %s", r)
-			log.Println(err)
 		}
 	}()
 
@@ -29,7 +27,6 @@ func GetMessageId(update *tlg.Update) (messageId int64, err error) {
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("PANIC - GetMessageId: %s", r)
-			log.Println(err)
 		}
 	}()
 

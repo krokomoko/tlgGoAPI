@@ -31,6 +31,9 @@ func Run() error {
 	var clientsSaveTime = time.Now()
 
 	for {
+
+		time.Sleep(time.Millisecond * 250)
+
 		currentTime := time.Now()
 		if currentTime.Sub(clientsSaveTime) > _CLIENTS_SAVING_TIMER {
 			clientsSaveTime = currentTime
