@@ -3,6 +3,7 @@ package tlgGoAPI
 import (
 	"fmt"
 	"log"
+	"time"
 )
 
 // message types
@@ -23,6 +24,7 @@ const (
 var (
 	_OFFSET_TO_UPDATE       int64  = 0
 	_PROCESSING_COUNT_LIMIT uint16 = 1
+	_CLIENTS_SAVING_TIMER          = time.Minute * 2
 )
 
 func SetUpdateOffset(offset int64) (err error) {

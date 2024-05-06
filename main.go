@@ -3,6 +3,7 @@ package tlgGoAPI
 import (
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/krokomoko/tlgGoAPI/bot"
 	"github.com/krokomoko/tlgGoAPI/tlg"
@@ -27,7 +28,18 @@ func Run() error {
 		limit: _PROCESSING_COUNT_LIMIT,
 	}
 
+	var clientsSaveTime = time.Now()
+
 	for {
+		currentTime := time.Now()
+		if currentTime.Sub(clientsSaveTime) > _CLIENTS_SAVING_TIMER {
+			clientsSaveTime = currentTime
+			if err := bot.SaveClients(); err != nil {
+				log.Fatal("ERROR - SaveClients:", err)
+			}
+
+		}
+
 		updates, err := getUpdates()
 		if err != nil {
 			log.Printf("ERROR - getUpdates: %s", err)

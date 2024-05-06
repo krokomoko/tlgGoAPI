@@ -18,6 +18,10 @@ func SetToken(token string) {
 	methodsURL = fmt.Sprintf("https://api.telegram.org/bot%s/", token)
 }
 
+func SetRedisPrefixKey(prefix string) {
+	redisPrefixKey = prefix
+}
+
 func SetStates(stateNames ...string) (err error) {
 	defer func() {
 		if r := recover(); r != nil {
