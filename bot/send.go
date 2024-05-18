@@ -168,8 +168,9 @@ func SendPhotoByURL(client *Client, photoURL tlg.InputFile, args ...interface{})
 	}()
 
 	tlgSendPhoto := tlg.SendPhoto{
-		ChatId: client.ID,
-		Photo:  photoURL,
+		ChatId:    client.ID,
+		Photo:     photoURL,
+		ParseMode: "HTML",
 	}
 
 	for argInd, arg := range args {
